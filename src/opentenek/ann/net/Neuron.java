@@ -41,7 +41,7 @@ public class Neuron
     // add all inputs
     public void setInputs(double i[]) {}
     
-    // add a sinle weight
+    // add a single weight
     public void setWeight(int index, double w) {}
     
     // add all weights
