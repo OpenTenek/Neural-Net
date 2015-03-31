@@ -83,6 +83,7 @@ public class Neuron
     // get input at [index]
     public double getInput(int index) 
     { 
+    	//ternary operator
         return inBounds(index) ? input[index] : 0.0; 
     }
     
