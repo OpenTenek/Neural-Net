@@ -1,0 +1,13 @@
+At the package declaration of every .java file, paste and edit this:
+
+/* 
+ * File Name : (file_name)
+ * Author(s) : (authors)
+ * Created   : (date_created)
+ * Updated   : (date_modified)
+ * Version   : 0.0.1
+ * 
+ * (description)
+ */
+ 
+ Rest of document be to completed.
