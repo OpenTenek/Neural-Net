@@ -5,7 +5,7 @@ package opentenek.ann.net;
  * Author(s) : Thinic
  * Created   : 2015 Mar 31
  * Updated   : 2015 Mar 31
- * Version   : 0.0.2.1
+ * Version   : 0.1.0
  * 
  * Basic unit for neural net.
  */
@@ -33,23 +33,67 @@ public class Neuron
     // returns number of inputs available
     public int getSize() { return size; }
     
-    //TODO: finish code beyond this point
-    
     // add a single input
-    public void setInput(int index, double i) {}
+    public boolean setInput(int index, double i) 
+    {
+        if(!inBounds(index)) return false;
+        
+        input[index] = i;
+        
+        return true;
+    }
     
     // add all inputs
-    public void setInputs(double i[]) {}
+    // must be the size of inputs array
+    public boolean setInputs(double i[]) 
+    {
+        if(input.length != i.length) return false; 
+        
+        input = i;
+        
+        return true;
+    }
     
     // add a single weight
-    public void setWeight(int index, double w) {}
+    public boolean setWeight(int index, double w) 
+    {
+        if(!inBounds(index)) return false;
+        
+        weight[index] = w;
+        
+        return true;
+    }
     
     // add all weights
-    public void setWeights(double w[]) {}
+    public boolean setWeights(double w[]) 
+    {
+        if(weight.length != w.length) return false;
+        
+        weight = w;
+        
+        return true;
+    }
+    
+    // set the bias
+    public void setBias(double b) 
+    {
+        bias = b;
+    }
     
     // get input at [index]
-    public double getInput(int index) { return 0.0; }
+    public double getInput(int index) 
+    { 
+        return inBounds(index) ? input[index] : 0.0; 
+    }
     
     // get weight at [index]
-    public double getWeight(int index) { return 0.0; }
+    public double getWeight(int index) 
+    { 
+        return inBounds(index) ? weight[index] : 0.0; 
+    }
+    
+    // get bias weight
+    public double getBias() { return bias; }
+    
+    private boolean inBounds(int i) { return i >= 0 && i < size; }
 }
