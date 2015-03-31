@@ -29,4 +29,27 @@ public class Neuron
         weight = new double[size];
         bias = 0.0;
     }
+    
+    // returns number of inputs available
+    public int getSize() { return size; }
+    
+    //TODO: finish code beyond this point
+    
+    // add a single input
+    public void setInput(int index, double i) {}
+    
+    // add all inputs
+    public void setInputs(double i[]) {}
+    
+    // add a sinle weight
+    public void setWeight(int index, double w) {}
+    
+    // add all weights
+    public void setWeights(double w[]) {}
+    
+    // get input at [index]
+    public double getInput(int index) { return 0.0; }
+    
+    // get weight at [index]
+    public double getWeight(int index) { return 0.0; }
 }
