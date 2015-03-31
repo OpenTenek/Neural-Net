@@ -5,7 +5,7 @@ package opentenek.ann.net;
  * Author(s) : Thinic
  * Created   : 2015 Mar 31
  * Updated   : 2015 Mar 31
- * Version   : 0.1.0
+ * Version   : 0.1.1
  * 
  * Basic unit for neural net.
  */
@@ -14,8 +14,6 @@ public class Neuron
 {
     // amount of inputs and weights
     private int size;
-    // list of inputs
-    private double input[];
     // list of weights
     private double weight[];
     // bias(threshold) is held separately for now
@@ -25,7 +23,6 @@ public class Neuron
     public Neuron(int size) 
     {
         this.size = size;
-        input = new double[size];
         weight = new double[size];
         bias = 0.0;
     }
@@ -33,25 +30,15 @@ public class Neuron
     // returns number of inputs available
     public int getSize() { return size; }
     
-    // add a single input
-    public boolean setInput(int index, double i) 
+    // fire
+    public double fire(double input) 
     {
-        if(!inBounds(index)) return false;
-        
-        input[index] = i;
-        
-        return true;
+        return 0.0; //TODO: finish
     }
     
-    // add all inputs
-    // must be the size of inputs array
-    public boolean setInputs(double i[]) 
+    public double fire(double input[]) 
     {
-        if(input.length != i.length) return false; 
-        
-        input = i;
-        
-        return true;
+        return 0.0; //TODO: finish
     }
     
     // add a single weight
@@ -78,13 +65,6 @@ public class Neuron
     public void setBias(double b) 
     {
         bias = b;
-    }
-    
-    // get input at [index]
-    public double getInput(int index) 
-    { 
-    	//ternary operator
-        return inBounds(index) ? input[index] : 0.0; 
     }
     
     // get weight at [index]
