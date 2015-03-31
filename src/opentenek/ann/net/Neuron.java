@@ -12,5 +12,21 @@ package opentenek.ann.net;
 
 public class Neuron
 {
+    // amount of inputs and weights
+    private int size;
+    // list of inputs
+    private double input[];
+    // list of weights
+    private double weight[];
+    // bias(threshold) is held separately for now
+    private double bias;
     
+    // ctor
+    public Neuron(int size) 
+    {
+        this.size = size;
+        input = new double[size];
+        weight = new double[size];
+        bias = 0.0;
+    }
 }
