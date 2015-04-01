@@ -2,10 +2,10 @@ package opentenek.ann.net;
 
 /* 
  * File Name : Neuron.java
- * Author(s) : Thinic
+ * Author(s) : Thinic, Ike
  * Created   : 2015 Mar 31
  * Updated   : 2015 Mar 31
- * Version   : 0.1.1
+ * Version   : 0.1.2
  * 
  * Basic unit for neural net.
  */

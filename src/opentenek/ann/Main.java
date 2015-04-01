@@ -7,9 +7,10 @@ import opentenek.ann.net.NeuralNetwork;
  * Author(s) : Thinic
  * Created   : 2015 Mar 31
  * Updated   : 2015 Mar 31
- * Version   : 0.0.1
+ * Version   : 0.1.2
  * 
  * This is where the application will be launched.
+ * Contains a demo XOR NN.
  */
 
 public class Main
