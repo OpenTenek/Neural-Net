@@ -25,20 +25,22 @@ public class Neuron
         this.size = size;
         weight = new double[size];
         bias = 0.0;
+        
+        initWeights();
     }
     
     // returns number of inputs available
-    public int getSize() { return size; }
-    
-    // fire
-    public double fire(double input) 
-    {
-        return 0.0; //TODO: finish
-    }
+    public int size() { return size; }
     
     public double fire(double input[]) 
     {
-        return 0.0; //TODO: finish
+        if(input.length != weight.length) return 0.0;
+        double out = 0.0;
+        for(int i = 0; i < size(); i++)
+            out += weight[i] * input[i];
+        out -= bias;
+        
+        return bipolar(out);
     }
     
     // add a single weight
@@ -77,4 +79,21 @@ public class Neuron
     public double getBias() { return bias; }
     
     private boolean inBounds(int i) { return i >= 0 && i < size; }
+    
+    private void initWeights() 
+    {
+        for(int i = 0; i < weight.length; i++) 
+            weight[i] = 1.0;
+    }
+    
+    @SuppressWarnings("unused")
+    private double sigmoid(double x) 
+    {
+        return 1.0 / (1.0 + Math.exp(-x));
+    }
+    
+    private double bipolar(double x) 
+    {
+        return x < 0 ? -1.0 : 1.0;
+    }
 }

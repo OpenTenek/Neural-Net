@@ -12,7 +12,7 @@ package opentenek.ann.net;
 
 public class NeuronLayer
 {
-    private Neuron layer[];
+    private Neuron neuron[];
     private int size, numInputs;
     
     public NeuronLayer() 
@@ -34,7 +34,7 @@ public class NeuronLayer
     
     public Neuron getNeuron(int index) 
     {
-        if(inBounds(index)) return layer[index];
+        if(inBounds(index)) return neuron[index];
         return null;
     }
     
@@ -57,7 +57,7 @@ public class NeuronLayer
         {
             for(int i = 0; i < size; i++) 
             {
-                out[i] = layer[i].fire(input);
+                out[i] = neuron[i].fire(input);
             }
         }
 
@@ -71,10 +71,10 @@ public class NeuronLayer
 
     private void initNeurons() 
     {
-        layer = new Neuron[size];        
-        for(int i = 0; i < layer.length; i++) 
+        neuron = new Neuron[size];        
+        for(int i = 0; i < neuron.length; i++) 
         {
-            layer[i] = new Neuron(numInputs);
+            neuron[i] = new Neuron(numInputs);
         }
     }
 }
