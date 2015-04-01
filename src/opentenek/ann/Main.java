@@ -1,5 +1,7 @@
 package opentenek.ann;
 
+import opentenek.ann.net.NeuralNetwork;
+
 /* 
  * File Name : Main.java
  * Author(s) : Thinic
@@ -14,6 +16,6 @@ public class Main
 {
     public static void main(String args[]) 
     {
-        
+        NeuralNetwork nn = new NeuralNetwork();
     }
 }

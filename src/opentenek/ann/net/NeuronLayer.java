@@ -15,6 +15,11 @@ public class NeuronLayer
     private Neuron layer[];
     private int size, numInputs;
     
+    public NeuronLayer() 
+    {
+        this(1, 1);
+    }
+    
     //ctor
     public NeuronLayer(int numNeurons, int inputs) 
     {
@@ -22,7 +27,17 @@ public class NeuronLayer
         numInputs = inputs;
         initNeurons();
     }
-
+    
+    public int size() { return size; }
+    
+    public int numInputs() { return numInputs; }
+    
+    public Neuron getNeuron(int index) 
+    {
+        if(inBounds(index)) return layer[index];
+        return null;
+    }
+    
     public void changeNeuronAmount(int amt) 
     {
         size = amt;
@@ -54,6 +69,11 @@ public class NeuronLayer
         // if neither are true, it will return all 0’s
 
         return out;
+    }
+    
+    private boolean inBounds(int index) 
+    {
+        return index >= 0 && index < size;
     }
 
     private void initNeurons() 
