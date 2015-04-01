@@ -5,7 +5,7 @@ package opentenek.ann.net;
  * Author(s) : Thinic, Ike
  * Created   : 2015 Mar 31
  * Updated   : 2015 Apr 1
- * Version   : 0.1.3
+ * Version   : 0.1.4
  * 
  * Basic unit for neural net.
  */

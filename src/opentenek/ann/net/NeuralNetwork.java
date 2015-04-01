@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * File Name : NeuronNetwork.java
  * Author(s) : Thinic, Ike
  * Created   : 2015 Mar 31
- * Updated   : 2015 Mar 31
- * Version   : 0.1.2
+ * Updated   : 2015 Apr 1
+ * Version   : 0.1.4
  * 
  * Neural network
  * 

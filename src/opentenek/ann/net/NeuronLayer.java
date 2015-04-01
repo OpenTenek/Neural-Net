@@ -4,8 +4,8 @@ package opentenek.ann.net;
  * File Name : NeuronLayer.java
  * Author(s) : Thinic, Ike
  * Created   : 2015 Mar 31
- * Updated   : 2015 Mar 31
- * Version   : 0.1.2
+ * Updated   : 2015 Apr 1
+ * Version   : 0.1.4
  * 
  * Basic layer of net, contains neurons.
  */
