@@ -7,6 +7,8 @@ package opentenek.ann.net;
  * Updated   : 2015 Apr 1
  * Version   : 0.0.1
  * 
+ * WORK IN PROGRESS
+ * 
  * Contains all the data for the neural network.
  * 
  * This can be used to create a neural network
