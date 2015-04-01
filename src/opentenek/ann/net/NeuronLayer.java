@@ -59,8 +59,12 @@ public class NeuronLayer
             {
                 out[i] = neuron[i].fire(input);
             }
+        } else  
+        {
+            System.out.println("invalid input amount");
+            return null;
         }
-
+        
         return out;
     }
     

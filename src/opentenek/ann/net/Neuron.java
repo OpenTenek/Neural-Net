@@ -47,9 +47,11 @@ public class Neuron
     public double fire(double input[]) 
     {
         double out = 0.0;
-        if(input.length != weight.length)
+        if(input.length == weight.length)
             for(int i = 0; i < size(); i++)
                 out += weight[i] * input[i];
+        else
+            System.out.println("invalid inputs");
         
         out -= bias;
         

@@ -38,7 +38,7 @@ public class NeuralNetwork
     
     public double[] fire(double input[]) 
     {
-        if(layers.size() < 1 || input.length != numInputs) return new double[]{ 0.0 };
+        if(layers.size() < 1 || input.length != numInputs) return null;
         
         double out[] = input;
         

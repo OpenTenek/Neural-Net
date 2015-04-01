@@ -37,7 +37,7 @@ public class Main
         
         System.out.println("XOR");
         printArray(nn.fire(new double[]{ 0.0, 0.0 }));
-        printArray(nn.fire(new double[]{ 1.0, 1.0 }));
+        printArray(nn.fire(new double[]{ 0.0, 1.0 }));
         printArray(nn.fire(new double[]{ 1.0, 0.0 }));
         printArray(nn.fire(new double[]{ 1.0, 1.0 }));
         System.out.println();
