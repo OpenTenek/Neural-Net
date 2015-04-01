@@ -1,6 +1,7 @@
 package opentenek.ann;
 
 import opentenek.ann.net.NeuralNetwork;
+import opentenek.ann.net.NeuralNetworkData;
 
 /* 
  * File Name : Main.java
@@ -34,19 +35,30 @@ public class Main
         nn.setWeight(1, 0, 1, -1.0);
         nn.setBias  (1, 0, 0.5);
         
+        System.out.println("XOR");
         printArray(nn.fire(new double[]{ 0.0, 0.0 }));
-        printArray(nn.fire(new double[]{ 0.0, 1.0 }));
+        printArray(nn.fire(new double[]{ 1.0, 1.0 }));
         printArray(nn.fire(new double[]{ 1.0, 0.0 }));
         printArray(nn.fire(new double[]{ 1.0, 1.0 }));
+        System.out.println();
         
+        System.out.println("NN for XOR");
         System.out.println(nn);
+        
+        System.out.println("Simple NN Data");
+        int n[] = new int[]{2, 3, 1};
+        NeuralNetworkData data = new NeuralNetworkData(2, n);
+        data.setWeight(1, 0, 2, 3.14);
+        
+        System.out.println(data);
+        printArray(data.getDataArray());
     }
     
     private static void printArray(double array[]) 
     {
         for(double d : array) 
         {
-            System.out.print(d + " ");
+            System.out.print(d + ", ");
         }
         System.out.println();
     }

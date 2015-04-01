@@ -20,20 +20,24 @@ package opentenek.ann.net;
 
 public class NeuralNetworkData
 {
-    // number of layers, INCLUDING input layer
+    // number of layers, NOT INCLUDING input layer
     private int layers;
+    
     // amount of neurons in each layer, the amount
     // of inputs for each neuron is determined by
-    // the previous amount of neurons.
+    // the previous amount of neurons. This DOES
+    // include the input layer. You get the neuron
+    // for a layer with neurons[layer+1] (since the 
+    // neurons array includes input layer. You get
+    // the amount of weights for the layer with
+    // neurons[layer];
     private int neurons[];
-    // amount of weights for each neuron in a 
-    // layer, this DOES NOT include the bias
-    private int weights[];
+    
     // all the weights and bias in the neural 
     // network. To get a specific weight, you must
     // use this equation: 
     //     a-1
-    //      ∑ N[i](W[i]+1) + n(W[a]+1) + w 
+    //      ∑ N[i+1](N[i]+1) + n(N[i]+1) + w 
     //     i=0
     // where N is the neurons array, 
     // W is the weights array,
@@ -48,23 +52,21 @@ public class NeuralNetworkData
     
     public NeuralNetworkData()
     {
-        this(1, new int[]{1}, new int[]{1});
+        this(1, new int[]{1, 1});
     }
     
-    public NeuralNetworkData(int layers, int neurons[], int weights[]) 
+    public NeuralNetworkData(int layers, int neurons[]) 
     {
         this.layers = layers;
         this.neurons = neurons;
-        this.weights = weights;
         
         isValid = initData();
     }
     
-    public NeuralNetworkData(int layers, int neurons[], int weights[], double data[]) 
+    public NeuralNetworkData(int layers, int neurons[], double data[]) 
     {
         this.layers = layers;
         this.neurons = neurons;
-        this.weights = weights;
         
         isValid = initData(data);
     }
@@ -91,21 +93,23 @@ public class NeuralNetworkData
     {
         int index = 0;
         for(int i = 0; i < layer; i++) 
-            index += neurons[i] * (weights[i] + 1);
-        index += neuron * (weights[layer] + 1);
+            index += neurons[i+1] * (neurons[i] + 1);
+        index += neuron * (neurons[layer] + 1);
         index += weight;
         
         return index;
     }
     
+    public double[] getDataArray() { return data; }
+    
     // checks if in bounds, weights can include bias
     private boolean inBounds(int layer, int neuron, int weight) 
     {
         if(layer < 0 || layer >= layers) return false;
-        if(neuron < 0 || neuron >= neurons[layer]) return false;
+        if(neuron < 0 || neuron >= neurons[layer+1]) return false;
         // only greater than, since bias is weights.length
         // position
-        if(weight < 0 || weight > weights[layer]) return false;
+        if(weight < 0 || weight > neurons[layer]) return false;
         
         return true;
     }
@@ -117,28 +121,31 @@ public class NeuralNetworkData
     
     private boolean initData() 
     {
-        if(neurons.length != layers || weights.length != layers) 
+        if(neurons.length != layers + 1) 
             return false;
         
         int size = 0;
         for(int i = 0; i < layers; i++) 
         {
-            size += neurons[i] * (weights[i]+1);
+            size += neurons[i+1] * (neurons[i]+1);
         }
         data = new double[size];
+        
+        for(int i = 0; i < data.length; i++)
+            data[i] = 0.0;
         
         return true;
     }
     
     private boolean initData(double data[]) 
     {
-        if(neurons.length != layers || weights.length != layers) 
+        if(neurons.length != layers + 1) 
             return false;
         
         int size = 0;
         for(int i = 0; i < layers; i++) 
         {
-            size += neurons[i] * (weights[i]+1);
+            size += neurons[i+1] * (neurons[i]+1);
         }
         if(data.length != size) return false;
         this.data = data;
@@ -148,22 +155,24 @@ public class NeuralNetworkData
     
     public String toString() 
     {
+        if(!isValid) return "Invalid data";
+        
         String str = "";
         
         for(int layer = 0; layer < layers; layer++) 
         {
-            str += "|";
+            str += "| ";
             
-            for(int neuron = 0; neuron < neurons[layer]; neuron++) 
+            for(int neuron = 0; neuron < neurons[layer+1]; neuron++) 
             {
-                for(int weight = 0; weight < weights[layer]; weight++) 
+                for(int weight = 0; weight < neurons[layer]; weight++) 
                 {
-                    str += getWeight(layer, neuron, weight) + ",";
+                    str += getWeight(layer, neuron, weight) + ", ";
                 }
-                str += "(" + getWeight(layer, neuron, weights[layer]) + ")";
-                str += "|";
+                str += "(" + getWeight(layer, neuron, neurons[layer]) + ")";
+                str += " | ";
             }
-            str += "\n";
+            str += " \n";
         }
         
         return str;
