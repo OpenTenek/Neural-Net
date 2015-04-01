@@ -5,9 +5,7 @@ package opentenek.ann.net;
  * Author(s) : Thinic
  * Created   : 2015 Apr 1
  * Updated   : 2015 Apr 1
- * Version   : 0.0.1
- * 
- * WORK IN PROGRESS
+ * Version   : 0.1.5
  * 
  * Contains all the data for the neural network.
  * 

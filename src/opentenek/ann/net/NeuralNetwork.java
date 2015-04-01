@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Author(s) : Thinic, Ike
  * Created   : 2015 Mar 31
  * Updated   : 2015 Apr 1
- * Version   : 0.1.4.1
+ * Version   : 0.1.5
  * 
  * Neural network
  * 
