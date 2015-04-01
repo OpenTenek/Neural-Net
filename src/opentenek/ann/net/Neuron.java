@@ -4,8 +4,8 @@ package opentenek.ann.net;
  * File Name : Neuron.java
  * Author(s) : Thinic, Ike
  * Created   : 2015 Mar 31
- * Updated   : 2015 Mar 31
- * Version   : 0.1.2
+ * Updated   : 2015 Apr 1
+ * Version   : 0.1.3
  * 
  * Basic unit for neural net.
  */
@@ -32,14 +32,28 @@ public class Neuron
     // returns number of inputs available
     public int size() { return size; }
     
+    // set the amount of weights, and copy over the existing values
+    public void setNumWeights(int amt) 
+    {
+        int oldSize = size;
+        size = amt;
+        double newWeights[] = new double[size];
+        // if new size < old size, only copy over up to new size
+        // else copy all of the old array
+        for(int i = 0; i < (oldSize < amt ? oldSize : size); i++) 
+            newWeights[i] = weight[i];
+    }
+    
     public double fire(double input[]) 
     {
-        if(input.length != weight.length) return 0.0;
         double out = 0.0;
-        for(int i = 0; i < size(); i++)
-            out += weight[i] * input[i];
+        if(input.length != weight.length)
+            for(int i = 0; i < size(); i++)
+                out += weight[i] * input[i];
+        
         out -= bias;
         
+        // temp return type
         return bipolar(out);
     }
     
