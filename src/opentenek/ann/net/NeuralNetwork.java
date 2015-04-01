@@ -3,11 +3,11 @@ package opentenek.ann.net;
 import java.util.ArrayList;
 
 /* 
- * File Name : NeuronNetwork.java
+ * File Name : NeuralNetwork.java
  * Author(s) : Thinic, Ike
  * Created   : 2015 Mar 31
  * Updated   : 2015 Apr 1
- * Version   : 0.1.4
+ * Version   : 0.1.4.1
  * 
  * Neural network
  * 
