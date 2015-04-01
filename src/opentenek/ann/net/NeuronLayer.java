@@ -52,21 +52,14 @@ public class NeuronLayer
     public double[] fire(double input[])
     {
         double out[] = new double[size];
-        if (numInputs == 1 && input.length == layer.length)
-        {
-            //it’s an input layer
-            for (int i = 0; i < size; i++) 
-            {
-                out[i] = layer[i].fire(input[i]);
-            }
-        } else if (input.length == numInputs)
+        
+        if (input.length == numInputs)
         {
             for(int i = 0; i < size; i++) 
             {
                 out[i] = layer[i].fire(input);
             }
         }
-        // if neither are true, it will return all 0’s
 
         return out;
     }
