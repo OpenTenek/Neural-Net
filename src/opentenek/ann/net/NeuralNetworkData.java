@@ -73,6 +73,19 @@ public class NeuralNetworkData
         isValid = initData(data);
     }
     
+    public int numInputs() { return neurons[0]; }
+    public int numLayers() { return layers; }
+    public int numNeurons(int layer) 
+    {
+        if(layer < 0 || layer >= layers) return 0;
+        return neurons[layer + 1];
+    }
+    public int numWeights(int layer) 
+    {
+        if(layer < 0 || layer >= layers) return 0;
+        return neurons[layer];
+    }
+    
     public boolean isValid() { return isValid; }
     
     public double getWeight(int layer, int neuron, int weight) 

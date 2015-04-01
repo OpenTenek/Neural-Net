@@ -45,6 +45,22 @@ public class Main
         System.out.println("NN for XOR");
         System.out.println(nn);
         
+        
+        NeuralNetworkData nndata = nn.getData();
+        NeuralNetwork newNN = new NeuralNetwork(nndata);
+        
+        System.out.println("NNData for XOR");
+        System.out.println(nndata);
+        printArray(nndata.getDataArray());
+        System.out.println();
+        System.out.println("NN from NNData");
+        System.out.println(newNN);
+        printArray(newNN.fire(new double[]{ 0.0, 0.0 }));
+        printArray(newNN.fire(new double[]{ 0.0, 1.0 }));
+        printArray(newNN.fire(new double[]{ 1.0, 0.0 }));
+        printArray(newNN.fire(new double[]{ 1.0, 1.0 }));
+        System.out.println();
+        
         System.out.println("Simple NN Data");
         int n[] = new int[]{2, 3, 1};
         NeuralNetworkData data = new NeuralNetworkData(2, n);

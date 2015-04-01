@@ -36,6 +36,59 @@ public class NeuralNetwork
         this.numInputs = numInputs;
     }
     
+    public NeuralNetwork(NeuralNetworkData data) 
+    {
+        layers = new ArrayList<NeuronLayer>();
+        
+        numInputs = data.numInputs();
+        
+        for(int layer = 0; layer < data.numLayers(); layer++) 
+        {
+            int inputs = data.numWeights(layer);
+            int neurons = data.numNeurons(layer);
+            NeuronLayer neuronLayer = new NeuronLayer(neurons, inputs);
+            
+            for(int neuron = 0; neuron < neurons; neuron++) 
+            {
+                Neuron n = neuronLayer.getNeuron(neuron);
+                
+                for(int weight = 0; weight < inputs; weight++) 
+                {
+                    double w = data.getWeight(layer, neuron, weight);
+                    n.setWeight(weight, w);
+                }
+                n.setBias(data.getWeight(layer, neuron, data.numWeights(layer)));
+            }
+            
+            layers.add(neuronLayer);
+        }
+    }
+    
+    public NeuralNetworkData getData() 
+    {
+        int neurons[] = new int[layers.size() + 1];
+        neurons[0] = numInputs;
+        for(int i = 0; i < layers.size(); i++) 
+        {
+            neurons[i+1] = layers.get(i).size();
+        }
+        NeuralNetworkData data = new NeuralNetworkData(layers.size(), neurons);
+        
+        for(int layer = 0; layer < layers.size(); layer++) 
+        {
+            for(int neuron = 0; neuron < layers.get(layer).size(); neuron++) 
+            {
+                for(int weight = 0; weight < layers.get(layer).numInputs(); weight++) 
+                {
+                    data.setWeight(layer, neuron, weight, layers.get(layer).getNeuron(neuron).getWeight(weight));
+                }
+                data.setWeight(layer, neuron, layers.get(layer).numInputs(), layers.get(layer).getNeuron(neuron).getBias());
+            }
+        }
+        
+        return data;
+    }
+    
     public double[] fire(double input[]) 
     {
         if(layers.size() < 1 || input.length != numInputs) return null;
