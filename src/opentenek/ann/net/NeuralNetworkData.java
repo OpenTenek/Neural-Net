@@ -33,7 +33,7 @@ public class NeuralNetworkData
     // network. To get a specific weight, you must
     // use this equation: 
     //      a
-    //     sum(N[i]W[i]) + n(W[a]+1) + w 
+    //      ∑(N[i]W[i]) + n(W[a]+1) + w 
     //     i=0
     // where N is the neurons array, 
     // W is the weights array,
