@@ -1,11 +1,11 @@
-package opentenek.ann.ga;
+package opentenek.ga;
 
 public class GA
 {
     private int generation = 0;
     private double crossoverRate = 0.8;
     private double mutationRate = 0.01;
-    private int subsetSize = 10;
+    private int subsetSize = 5;
     
     private BinaryPopulation pop;
     

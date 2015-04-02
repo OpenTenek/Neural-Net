@@ -1,4 +1,4 @@
-package opentenek.ann.ga;
+package opentenek.ga;
 
 /* 
  * File Name : GAMain.java
@@ -14,8 +14,8 @@ public class GAMain
 {
     public static void main(String args[]) 
     {
-        GASystem.setGoal("1111111100000000111111110000000011111111000000001111111100000000111111110000000011111111000000001111111100000000111111110000000011111111000000001111111100000000");
-        BinaryPopulation bp = new BinaryPopulation(40);
+        GASystem.setGoal("11111111000000000000000011111111");
+        BinaryPopulation bp = new BinaryPopulation(20);
         GA ga = new GA(bp);
         
         System.out.println("Goal: ");
@@ -28,7 +28,7 @@ public class GAMain
             ga.print(); 
             try
             {
-                Thread.sleep(300);
+                Thread.sleep(100);
             } catch (InterruptedException e)
             {
                 e.printStackTrace();

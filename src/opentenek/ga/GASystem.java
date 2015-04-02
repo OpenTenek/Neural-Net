@@ -1,4 +1,4 @@
-package opentenek.ann.ga;
+package opentenek.ga;
 
 public class GASystem
 {
