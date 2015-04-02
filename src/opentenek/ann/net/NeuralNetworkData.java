@@ -113,6 +113,16 @@ public class NeuralNetworkData
         return index;
     }
     
+    public void setWeight(int index, double value) 
+    {
+        data[index] = value;
+    }
+    
+    public double getWeight(int index) 
+    {
+        return data[index];
+    }
+    
     public double[] getDataArray() { return data; }
     
     // checks if in bounds, weights can include bias
@@ -189,5 +199,17 @@ public class NeuralNetworkData
         }
         
         return str;
+    }
+
+    public void randomize(double min, double max)
+    {
+        for(int i = 0; i < data.length; i++) 
+            data[i] = rand(min, max);
+    }
+    
+    private double rand(double min, double max) 
+    {
+        double range = max - min;
+        return Math.random() * range + min;
     }
 }

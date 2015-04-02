@@ -56,7 +56,7 @@ public class Neuron
         out -= bias;
         
         // temp return type
-        return bipolar(out);
+        return sigmoid(out);
     }
     
     // add a single weight
@@ -102,12 +102,12 @@ public class Neuron
             weight[i] = 1.0;
     }
     
-    @SuppressWarnings("unused")
     private double sigmoid(double x) 
     {
         return 1.0 / (1.0 + Math.exp(-x));
     }
     
+    @SuppressWarnings("unused")
     private double bipolar(double x) 
     {
         return x < 0 ? -1.0 : 1.0;

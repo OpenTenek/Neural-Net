@@ -20,6 +20,21 @@ public class Board
     public int getScore() { return score; }
     public void resetScore() { score = 0; }
     
+    public int highestValue() 
+    {
+        int best = 0;
+        for(int x = 0; x < width; x++)
+            for(int y = 0; y < height; y++) 
+            {
+                if(getTile(x, y) != null) 
+                {
+                    int v = getTile(x, y).getValue();
+                    if(v > best) best = v;
+                }
+            }
+        return best;
+    }
+    
     public void clearBoard() 
     {
         for(int x = 0; x < width; x++)

@@ -48,6 +48,7 @@ public abstract class GameLoop implements Runnable
         }
     }
     
+    @SuppressWarnings("unused")
     public void run() 
     {
         frameTime = tickTime = System.nanoTime();
@@ -84,7 +85,7 @@ public abstract class GameLoop implements Runnable
                 tps = ticks;
                 fps = frames;
                 frames = ticks = 0;
-                System.out.println(fps + " fps, " + tps + " ticks");
+//                System.out.println(fps + " fps, " + tps + " ticks");
             }
         }
     }
