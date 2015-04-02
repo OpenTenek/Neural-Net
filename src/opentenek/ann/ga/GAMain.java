@@ -14,12 +14,25 @@ public class GAMain
 {
     public static void main(String args[]) 
     {
-        GASystem.setGoal("11111111000000000000000011111111");
-        BinaryPopulation bp = new BinaryPopulation(10);
+        GASystem.setGoal("1111111100000000111111110000000011111111000000001111111100000000111111110000000011111111000000001111111100000000111111110000000011111111000000001111111100000000");
+        BinaryPopulation bp = new BinaryPopulation(40);
+        GA ga = new GA(bp);
         
         System.out.println("Goal: ");
         System.out.println(GASystem.getGoal());
-        bp.sortBest();
-        bp.printFitness();
+        ga.print(); 
+        
+        while(ga.bestFitness() < 100) 
+        {
+            ga.evolve();
+            ga.print(); 
+            try
+            {
+                Thread.sleep(300);
+            } catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 }

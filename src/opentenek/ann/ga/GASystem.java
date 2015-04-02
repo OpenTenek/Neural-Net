@@ -10,9 +10,9 @@ public class GASystem
     
     public static double determineFitness(BinaryString str) 
     {
-        int length = goal.length() < str.toString().length() ? goal.length() : str.toString().length();
+        int length = goal.length() < str.getData().length() ? goal.length() : str.getData().length();
         int correct = 0;
-        char g[] = goal.toCharArray(), s[] = str.toString().toCharArray();
+        char g[] = goal.toCharArray(), s[] = str.getData().toCharArray();
         for(int i = 0; i < length; i++) 
         {
             if(g[i] == s[i]) correct++;
@@ -22,4 +22,33 @@ public class GASystem
         
         return percent / 100.0;
     }
+    
+    public static void sortBest(BinaryString pop[]) 
+    {
+        BinaryString tmp;
+        double fitTmp, fitNew;
+        int b;
+        for(int i = 0; i < pop.length - 1; i++) 
+        {
+            b = i;
+            fitTmp = GASystem.determineFitness(pop[i]);
+            for(int j = i+1; j < pop.length; j++) 
+            {
+                fitNew = GASystem.determineFitness(pop[j]);
+                if(fitNew > fitTmp) 
+                {
+                    b = j;
+                    fitTmp = fitNew;
+                }
+            }
+            if(b == i) continue;
+            tmp = pop[i];
+            pop[i] = pop[b];
+            pop[b] = tmp;
+        }
+        
+//        return pop;
+    }
+    
+    
 }

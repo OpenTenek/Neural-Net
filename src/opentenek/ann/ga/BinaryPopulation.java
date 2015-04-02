@@ -14,6 +14,21 @@ public class BinaryPopulation
         generate();
     }
     
+    public BinaryString[] getPopulation() 
+    {
+        return pop;
+    }
+    
+    public BinaryString get(int index) 
+    {
+        return pop[index];
+    }
+    
+    public void set(int index, BinaryString bs) 
+    {
+        pop[index] = bs;
+    }
+    
     public void generate() 
     {
         int length = GASystem.getGoal().length();
@@ -24,8 +39,29 @@ public class BinaryPopulation
         }
     }
     
+    public BinaryString getFittest() 
+    {
+        GASystem.sortBest(pop);
+        return pop[0];
+    }
+    
+    public BinaryPopulation getSubset(int amt) 
+    {
+        BinaryPopulation newPop = new BinaryPopulation(amt);
+        
+        for(int i = 0; i < amt; i++) 
+        {
+            int n = (int)(Math.random() * size);
+            newPop.set(i, pop[n]);
+        }
+        
+        return newPop;
+    }
+    
     public void printFitness() 
     {
+        GASystem.sortBest(pop);
+        
         for(int i = 0; i < size; i++)
         {
             System.out.print(pop[i]);
@@ -35,27 +71,8 @@ public class BinaryPopulation
         }
     }
     
-    public void sortBest() 
+    public int size() 
     {
-        BinaryString tmp;
-        double fitTmp, fitNew;
-        int b;
-        for(int i = 0; i < size; i++) 
-        {
-            b = i;
-            fitTmp = GASystem.determineFitness(pop[b]);
-            for(int j = i+1; j < size; j++) 
-            {
-                fitNew = GASystem.determineFitness(pop[j]);
-                if(fitNew > fitTmp) 
-                {
-                    b = j;
-                    fitTmp = fitNew;
-                }
-            }
-            tmp = pop[i];
-            pop[i] = pop[b];
-            pop[b] = tmp;
-        }
+        return pop.length;
     }
 }
