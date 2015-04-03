@@ -74,8 +74,6 @@ public class NNGame extends GameLoop
                     input[x + y*width] = val / hval;
                 }
             
-//            printArray(input);
-//            System.exit(1);
             boolean moved = false;
             boolean allowed[] = new boolean[]{true, true, true, true};
             double out[] = ai.fire(input);
@@ -133,7 +131,6 @@ public class NNGame extends GameLoop
                 reset();
                 
                 curIndex++;
-//                System.out.println("Index: " + curIndex);
                 if(curIndex >= pop.size()) 
                 {
                     pop.sortBestScore();
@@ -150,15 +147,6 @@ public class NNGame extends GameLoop
                 }
                 ai = new NeuralNetwork(pop.get(curIndex).getData());
             }
-        }
-    }
-
-    private void printArray(double[] input)
-    {
-        for(int i = 0; i < input.length; i++) 
-        {
-            System.out.print(input[i] + ", \t");
-            if((i+1) % 4 == 0) System.out.println(); 
         }
     }
 

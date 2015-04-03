@@ -111,6 +111,8 @@ public class NeuralNetwork
             layers.get(0).changeInputAmount(numInputs);
     }
     
+    public int getNumOutputs() { return layers.get(layers.size() - 1).size(); }
+    
     public double getWeight(int layer, int neuron, int weightIndex) 
     {
         if(numLayers() < 1 || !inBounds(layer)) return 0.0;
