@@ -1,3 +1,5 @@
-# Neural-Net
+# Practiceland
 
-Put code in the 'begin' branch, not master yet.
+Practice in Java/AI cooking up a GA and NN
+
+except... I didn't actually put the ga in the right folder...
