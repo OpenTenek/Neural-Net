@@ -1,33 +1,33 @@
 package opentenek.ann.net.ga;
 
-public class AIPopulation
+public class GAPopulation
 {
-    private AIData pop[];
+    private GAData pop[];
     private int layers;
     private int neurons[];
     
-    public AIPopulation(int amt, int layers, int neurons[]) 
+    public GAPopulation(int amt, int layers, int neurons[]) 
     {
         this.layers = layers;
         this.neurons = neurons;
-        pop = new AIData[amt];
+        pop = new GAData[amt];
         for(int i = 0; i < amt; i++) 
-            pop[i] = new AIData(layers, neurons);
+            pop[i] = new GAData(layers, neurons);
     }
     
-    public AIData get(int index) 
+    public GAData get(int index) 
     {
         return pop[index];
     }
     
-    public void set(int index, AIData data) 
+    public void set(int index, GAData data) 
     {
         pop[index] = data;
     }
     
-    public AIPopulation subset(int amt) 
+    public GAPopulation subset(int amt) 
     {
-        AIPopulation subset = new AIPopulation(amt, layers, neurons);
+        GAPopulation subset = new GAPopulation(amt, layers, neurons);
         
         for(int i = 0; i < amt; i++) 
         {
@@ -38,7 +38,7 @@ public class AIPopulation
         return subset;
     }
     
-    public AIData getFittest() 
+    public GAData getFittest() 
     {
         sortBestScore();
         return pop[0];
@@ -61,7 +61,7 @@ public class AIPopulation
     
     public void sortBestScore() 
     {
-        AIData tmp;
+        GAData tmp;
         for(int i = 0; i < size() - 1; i++) 
         {
             int best = i;
@@ -78,7 +78,7 @@ public class AIPopulation
     public void print()
     {
         int i = 0;
-        for(AIData data : pop) 
+        for(GAData data : pop) 
         {
             System.out.print("Index " + i + ": " + data.getFitness() + "\t");
             i++;

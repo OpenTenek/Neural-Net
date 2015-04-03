@@ -2,12 +2,12 @@ package opentenek.ann.net.ga;
 
 import opentenek.ann.net.NeuralNetworkData;
 
-public class AIData
+public class GAData
 {
     private NeuralNetworkData data;
     private double score = 0;
     
-    public AIData(int layers, int neurons[]) 
+    public GAData(int layers, int neurons[]) 
     {
         data = new NeuralNetworkData(layers, neurons);
         data.randomize(-10, 10);

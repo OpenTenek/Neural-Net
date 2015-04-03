@@ -14,7 +14,7 @@ import opentenek.ann.net.NeuralNetworkData;
  * Contains a demo XOR NN.
  */
 
-public class Main
+public class SampleMain
 {
     public static void main(String args[]) 
     {

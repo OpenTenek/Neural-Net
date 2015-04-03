@@ -2,14 +2,14 @@ package opentenek.ann.net.ga;
 
 public class GA
 {
-    private AIPopulation pop;
+    private GAPopulation pop;
     private int generation = 0;
     private int subset;
     private double crossoverRate;
     private double mutationRate;
     private double weightChange;
     
-    public GA(AIPopulation pop, int sub, double cross, double mutate, double change) 
+    public GA(GAPopulation pop, int sub, double cross, double mutate, double change) 
     {
         this.pop = pop;
         subset = sub;
@@ -18,7 +18,7 @@ public class GA
         weightChange = change;
     }
     
-    public AIPopulation getPopulation() 
+    public GAPopulation getPopulation() 
     {
         return pop;
     }
@@ -32,7 +32,7 @@ public class GA
     {
         pop.sortBestScore();
         
-        AIPopulation newPop = new AIPopulation(
+        GAPopulation newPop = new GAPopulation(
                 pop.size(),
                 pop.layers(),
                 pop.neurons());
@@ -41,8 +41,8 @@ public class GA
         
         for(int i = 1; i < pop.size(); i++) 
         {
-            AIData parent1 = pop.subset(subset).getFittest();
-            AIData parent2 = pop.subset(subset).getFittest();
+            GAData parent1 = pop.subset(subset).getFittest();
+            GAData parent2 = pop.subset(subset).getFittest();
             newPop.set(i, mutate(crossover(parent1, parent2)));
         }
         
@@ -51,9 +51,9 @@ public class GA
         generation++;
     }
     
-    private AIData crossover(AIData data1, AIData data2) 
+    private GAData crossover(GAData data1, GAData data2) 
     {
-        AIData data = new AIData(pop.layers(), pop.neurons());
+        GAData data = new GAData(pop.layers(), pop.neurons());
         
         for(int i = 0; i < data.getData().getDataArray().length; i++) 
         {
@@ -69,7 +69,7 @@ public class GA
         return data;
     }
     
-    private AIData mutate(AIData data) 
+    private GAData mutate(GAData data) 
     {
         for(int i = 0; i < data.getData().getDataArray().length; i++) 
         {
