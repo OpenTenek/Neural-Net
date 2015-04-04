@@ -103,7 +103,25 @@ public class NeuralNetwork
         return out;
     }
     
-    public int getNumInputs() { return numInputs; }
+    public double[][] fireFull(double input[]) 
+    {
+        if(layers.size() < 1 || input.length != numInputs) return null;
+        
+        double output[][] = new double[layers.size()][];
+        int i = 0;
+        
+        double out[] = input;
+        
+        for(NeuronLayer layer : layers) 
+        {
+            output[i++] = layer.fire(out);
+            out = layer.fire(out);
+        }
+        
+        return output;
+    }
+    
+    public int numInputs() { return numInputs; }
     public void setNumInputs(int num) 
     { 
         numInputs = num; 
@@ -111,7 +129,7 @@ public class NeuralNetwork
             layers.get(0).changeInputAmount(numInputs);
     }
     
-    public int getNumOutputs() { return layers.get(layers.size() - 1).size(); }
+    public int numOutputs() { return layers.get(layers.size() - 1).size(); }
     
     public double getWeight(int layer, int neuron, int weightIndex) 
     {
@@ -174,6 +192,16 @@ public class NeuralNetwork
     {
         if(inBounds(index)) return layers.get(index).numInputs();
         return 0;
+    }
+    
+    public int mostNeurons() 
+    {
+        int most = 0;
+        for(int layer = 0; layer < numLayers(); layer++) 
+        {
+            if(numNeurons(layer) > most) most = numNeurons(layer);
+        }
+        return most;
     }
     
     public String toString() 
