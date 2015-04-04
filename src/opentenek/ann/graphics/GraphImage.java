@@ -46,8 +46,6 @@ public class GraphImage
         int width = image.getWidth();
         int height = image.getHeight();
         
-        System.out.println("range: " + range());
-        
         g.setColor(Color.white);
         g.fillRect(0, 0, width, height);
         

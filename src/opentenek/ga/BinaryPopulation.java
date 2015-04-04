@@ -64,10 +64,10 @@ public class BinaryPopulation
         
         for(int i = 0; i < size; i++)
         {
-            System.out.print(pop[i]);
-            System.out.print(", fitness: ");
+            System.out.print("fitness: ");
             System.out.print(GASystem.determineFitness(pop[i]));
-            System.out.println("%");
+            System.out.print("%, ");
+            System.out.println(pop[i]);
         }
     }
     
