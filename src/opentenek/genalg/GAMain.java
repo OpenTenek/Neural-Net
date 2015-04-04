@@ -1,4 +1,4 @@
-package opentenek.ga;
+package opentenek.genalg;
 
 import opentenek.ann.graphics.GraphDisplay;
 
@@ -26,7 +26,7 @@ public class GAMain
                 "11111111000000000000000011111111111111110000000000000000111111111111111100000000000000001111111111111111000000000000000011111111" + 
                 "11111111000000000000000011111111111111110000000000000000111111111111111100000000000000001111111111111111000000000000000011111111"
                 );
-        BinaryPopulation bp = new BinaryPopulation(20);
+        BinaryPopulation bp = new BinaryPopulation(10);
         GA ga = new GA(bp);
         
         System.out.println("Goal: ");

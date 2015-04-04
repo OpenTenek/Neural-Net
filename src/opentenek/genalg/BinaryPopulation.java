@@ -1,4 +1,4 @@
-package opentenek.ga;
+package opentenek.genalg;
 
 public class BinaryPopulation
 {
@@ -66,7 +66,7 @@ public class BinaryPopulation
         {
             System.out.print("fitness: ");
             System.out.print(GASystem.determineFitness(pop[i]));
-            System.out.print("%, ");
+            System.out.print("%, \t");
             System.out.println(pop[i]);
         }
     }

@@ -49,20 +49,32 @@ public class GraphImage
         g.setColor(Color.white);
         g.fillRect(0, 0, width, height);
         
+        boolean quick = (double)height / values.size() < 1;
+        int inBetween = 100;
+        
         double range = range();
         @SuppressWarnings("unused")
         double highest = highestValue();
         double lowest = lowestValue();
         double dWidth = range <= 0 ? 0 : (double)width / values.size();
         // to get height: (value / highest) * height
-        g.setColor(new Color(0x7f7f7f));
         for(int i = 1; i < values.size(); i++) 
         {
+            g.setColor(new Color(0xbfbfbf));
             int x1 = (int)(dWidth * (i - 1));
             int y1 = height - (int)((values.get(i - 1) - lowest) / (range) * height);
             int x2 = (int)(dWidth * i);
             int y2 = height - (int)((values.get(i) - lowest) / (range) * height);
             g.drawLine(x1, y1, x2, y2);
+            if(i % inBetween == 0) 
+            {
+                g.setStroke(new BasicStroke(3));
+                x1 = (int)(dWidth * (i - inBetween));
+                y1 = height - (int)((values.get(i - inBetween) - lowest) / (range) * height);
+                g.setColor(new Color(0x00ff));
+                g.drawLine(x1, y1, x2, y2);
+                g.setStroke(new BasicStroke(2));
+            }
         }
         
         g.dispose();
