@@ -95,6 +95,8 @@ public class SimpleNNImage
                 }
             }
         }
+        
+        g.dispose();
     }
     
     public BufferedImage getImage() 
