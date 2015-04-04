@@ -126,6 +126,7 @@ public class SimpleNNImage
     
     private Color colorByInput(double in) 
     {
+        in = in * 2 - 1;
         float amt = 1f / (1 + (float)Math.exp(-in));
         int c = Color.HSBtoRGB((120f/360f)*amt, 0.5f, 0.85f);
         return new Color(c); 

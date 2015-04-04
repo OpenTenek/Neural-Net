@@ -31,6 +31,12 @@ public class SimpleNNDisplay
         image = new SimpleNNImage(nn, width, height);
     }
     
+    public void setNN(NeuralNetwork nn) 
+    {
+        this.nn = nn;
+        image.setNN(nn);
+    }
+    
     public void draw() 
     {
         input = null;
