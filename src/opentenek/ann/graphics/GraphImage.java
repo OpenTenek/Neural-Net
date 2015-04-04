@@ -52,6 +52,7 @@ public class GraphImage
         g.fillRect(0, 0, width, height);
         
         double range = range();
+        @SuppressWarnings("unused")
         double highest = highestValue();
         double lowest = lowestValue();
         double dWidth = range <= 0 ? 0 : (double)width / values.size();
