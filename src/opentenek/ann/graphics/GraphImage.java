@@ -37,6 +37,7 @@ public class GraphImage
         return image;
     }
     
+    // draws every point for now
     private void redraw() 
     {
         Graphics2D g = (Graphics2D) image.getGraphics();
