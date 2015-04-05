@@ -49,7 +49,6 @@ public class GraphImage
         g.setColor(Color.white);
         g.fillRect(0, 0, width, height);
         
-        boolean quick = (double)height / values.size() < 1;
         int inBetween = 100;
         
         double range = range();
